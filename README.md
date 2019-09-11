@@ -1,5 +1,11 @@
 # ssb-get-thread
 
-An experiment for getting the messages of a thread remotely
+An SSB plugin that exposed a get method for fetching a message and all
+replies known to the server for a particular message hash. This is
+similar in spirit to [ssb-ooo](https://github.com/ssbc/ssb-ooo) except
+there is no protocol involved to fetch messages from other nodes.
 
-Please don't use this for anything
+I created this plugin for the [ssb browser
+demo](https://github.com/arj03/ssb-browser-demo) project as a way to
+download messages outside the initial replication boundry as an
+experiment.

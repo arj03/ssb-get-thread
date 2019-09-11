@@ -1,6 +1,5 @@
 const pull = require('pull-stream')
-
-sort = require('ssb-sort')
+const sort = require('ssb-sort')
 
 exports.manifest = {
   get: 'async'
