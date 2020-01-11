@@ -1,7 +1,7 @@
 # ssb-get-thread
 
-An SSB plugin that exposed a get method for fetching a message and all
-replies known to the server for a particular message hash. This is
+An SSB plugin that exposes a get method for fetching a message and all
+replies known to the server for a particular message id. This is
 similar in spirit to [ssb-ooo](https://github.com/ssbc/ssb-ooo) except
 there is no protocol involved to fetch messages from other nodes.
 
