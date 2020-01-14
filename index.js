@@ -19,21 +19,29 @@ exports.init = function (sbot, config) {
       console.log("getting msg", msgId)
       if (!msgId) return cb("msg not found:" + msgId)
 
-      sbot.get(msgId, (err, rootMsg) => {
-	pull
-	(
-	  sbot.backlinks.read({
-	    query: [ {$filter: { dest: msgId }} ]
-	  }),
-	  pull.filter((msg) => {
-	    return msg.value.private !== true
-	  }),
-	  pull.collect((err, messages) => {
-	    if (err) return cb(err)
+      if (!sbot.backlinks) {
+        const err = "ssb-backlinks plugin not installed!"
+        console.log(err)
+        return cb(err)
+      }
 
-	    cb(null, [rootMsg, ...sort(messages).map(m => m.value)])
-	  })
-	)
+      sbot.get(msgId, (err, rootMsg) => {
+        if (err) return cb(err)
+
+        pull
+        (
+          sbot.backlinks.read({
+            query: [ {$filter: { dest: msgId }} ]
+          }),
+          pull.filter((msg) => {
+            return msg.value.private !== true
+          }),
+          pull.collect((err, messages) => {
+            if (err) return cb(err)
+
+            cb(null, [rootMsg, ...sort(messages).map(m => m.value)])
+          })
+        )
       })
     }
   }
