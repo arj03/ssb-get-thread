@@ -1,6 +1,6 @@
 {
   "name": "ssb-get-thread",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "",
   "main": "export-data.js",
   "scripts": {
